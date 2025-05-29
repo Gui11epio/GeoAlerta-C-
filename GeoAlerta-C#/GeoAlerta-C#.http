@@ -1,0 +1,6 @@
+@GeoAlerta_C__HostAddress = http://localhost:5068
+
+GET {{GeoAlerta_C__HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
