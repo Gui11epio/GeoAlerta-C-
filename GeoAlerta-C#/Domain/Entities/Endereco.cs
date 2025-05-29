@@ -2,5 +2,12 @@
 {
     public class Endereco
     {
+        public int ID { get; set; }
+        public string Bairro { get; set; }
+        private string Cidade {  get; set; }
+
+        // Relacionamento com Usuario 1..1
+        public int UsuarioId { get; set; } 
+        public Usuario Usuario { get; set; }
     }
 }

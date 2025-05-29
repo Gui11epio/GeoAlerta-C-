@@ -9,8 +9,7 @@
         public string Telefone { get; set; }
 
         // Relacionamento com Endereco 1..1
-        public int EnderecoId { get; set; }
-        public Endereco endereco { get; set; }
+        public Endereco Endereco { get; set; }
 
         // / Relacionamento com Alertas 1..N
         public ICollection<Alertas> Alertas { get; set; } = new List<Alertas>();

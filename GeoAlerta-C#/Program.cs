@@ -14,6 +14,8 @@ namespace GeoAlerta_C_
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
