@@ -1,4 +1,9 @@
 
+using GeoAlerta_C_.Infrastructure.Context;
+using GeoAlerta_C_.Infrastructure.Mappings;
+using Microsoft.EntityFrameworkCore;
+using System;
+
 namespace GeoAlerta_C_
 {
     public class Program
@@ -13,6 +18,15 @@ namespace GeoAlerta_C_
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<AppDBContext>(options =>
+            {
+                var connectionString = Environment.GetEnvironmentVariable("CONEXAO_GS");
+                if (string.IsNullOrWhiteSpace(connectionString))
+                    throw new Exception("A variável de ambiente CONEXAO_GS não está definida.");
+
+                options.UseOracle(connectionString);
+            });
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 
