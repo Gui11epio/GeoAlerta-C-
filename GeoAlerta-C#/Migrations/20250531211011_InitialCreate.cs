@@ -34,6 +34,7 @@ namespace GeoAlerta_C_.Migrations
                     Id = table.Column<int>(type: "NUMBER(10)", nullable: false)
                         .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
                     Bairro = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
+                    Cidade = table.Column<string>(type: "NVARCHAR2(2000)", nullable: false),
                     UsuarioId = table.Column<int>(type: "NUMBER(10)", nullable: false)
                 },
                 constraints: table =>

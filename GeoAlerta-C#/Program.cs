@@ -1,4 +1,5 @@
 
+using GeoAlerta_C_.Application.Services;
 using GeoAlerta_C_.Infrastructure.Context;
 using GeoAlerta_C_.Infrastructure.Mappings;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,12 @@ namespace GeoAlerta_C_
 
                 options.UseOracle(connectionString);
             });
+
+            builder.Services.AddScoped<UsuarioService>();
+            builder.Services.AddScoped<EnderecoService>();
+            builder.Services.AddScoped<AlertaService>();
+
+
 
             builder.Services.AddAutoMapper(typeof(MappingProfile));
 

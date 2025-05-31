@@ -2,8 +2,8 @@
 {
     public class AlertaResponse
     {
-        public string NivelRisco { get; set; }
-        public string Descricao { get; set; }
+        public string NivelRisco { get; set; } = string.Empty;
+        public string Descricao { get; set; } = string.Empty;
         public int Probabilidade { get; set; }
         
     }

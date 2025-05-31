@@ -26,28 +26,35 @@ namespace GeoAlerta_C_.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DataHora")
-                        .HasColumnType("TIMESTAMP(7)");
+                        .HasColumnType("TIMESTAMP(7)")
+                        .HasColumnName("DataHora");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("Descricao");
 
                     b.Property<int>("EnderecoId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("EnderecoId");
 
                     b.Property<int>("NivelRisco")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("NivelRisco");
 
                     b.Property<int>("Probabilidade")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Probabilidade");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("UsuarioId");
 
                     b.HasKey("Id");
 
@@ -62,16 +69,24 @@ namespace GeoAlerta_C_.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("Id");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("Bairro");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("Cidade");
 
                     b.Property<int>("UsuarioId")
-                        .HasColumnType("NUMBER(10)");
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("UsuarioId");
 
                     b.HasKey("Id");
 

@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Bairro { get; set; }
-        private string Cidade {  get; set; }
+        public string Cidade { get; set; }
 
         // Relacionamento com Usuario 1..1
         public int UsuarioId { get; set; } 
