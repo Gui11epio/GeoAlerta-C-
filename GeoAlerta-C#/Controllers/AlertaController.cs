@@ -17,6 +17,8 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(AlertaResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<AlertaResponse> Calcular([FromBody] DadosClimaticosRequest request)
         {
             try

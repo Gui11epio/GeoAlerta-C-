@@ -1,4 +1,5 @@
 ﻿using GeoAlerta_C_.Application.DTOs.Request;
+using GeoAlerta_C_.Application.DTOs.Response;
 using GeoAlerta_C_.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,8 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<EnderecoResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult ObterTodos()
         {
             var enderecos = _enderecoService.ObterTodos();
@@ -23,6 +26,9 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(EnderecoResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult ObterPorId(int id)
         {
             var endereco = _enderecoService.ObterPorId(id);
@@ -31,6 +37,8 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(EnderecoResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Criar([FromBody] EnderecoRequest request)
         {
             var endereco = _enderecoService.Criar(request);
@@ -38,6 +46,9 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Atualizar(int id, [FromBody] EnderecoRequest request)
         {
             var sucesso = _enderecoService.Atualizar(id, request);
@@ -46,6 +57,8 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Remover(int id)
         {
             var sucesso = _enderecoService.Remover(id);

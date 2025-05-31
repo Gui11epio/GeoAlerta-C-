@@ -1,4 +1,5 @@
 ﻿using GeoAlerta_C_.Application.DTOs.Request;
+using GeoAlerta_C_.Application.DTOs.Response;
 using GeoAlerta_C_.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,10 @@ namespace GeoAlerta_C_.Controllers
             _usuarioService = usuarioService;
         }
 
+        
         [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<UsuarioResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult ObterTodos()
         {
             var usuarios = _usuarioService.ObterTodos();
@@ -23,6 +27,9 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(UsuarioResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult ObterPorId(int id)
         {
             var usuario = _usuarioService.ObterPorId(id);
@@ -31,6 +38,8 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(typeof(UsuarioResponse), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Criar([FromBody] UsuarioRequest request)
         {
             var usuario = _usuarioService.Criar(request);
@@ -38,6 +47,9 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Atualizar(int id, [FromBody] UsuarioRequest request)
         {
             var sucesso = _usuarioService.Atualizar(id, request);
@@ -46,6 +58,8 @@ namespace GeoAlerta_C_.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Remover(int id)
         {
             var sucesso = _usuarioService.Remover(id);

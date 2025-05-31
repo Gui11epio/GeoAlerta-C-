@@ -13,8 +13,19 @@ namespace GeoAlerta_C_
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //Adiciona o CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin() // Você pode restringir isso no futuro
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
 
+
+            // Add services to the container.
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -45,6 +56,10 @@ namespace GeoAlerta_C_
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            //Usa o CORS
+            app.UseCors("AllowAll");
+
 
             app.UseHttpsRedirection();
 
