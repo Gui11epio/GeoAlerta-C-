@@ -2,7 +2,7 @@
 {
     public class Endereco
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Bairro { get; set; }
         private string Cidade {  get; set; }
 

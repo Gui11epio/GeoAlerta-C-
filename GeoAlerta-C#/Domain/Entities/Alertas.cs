@@ -4,7 +4,7 @@ namespace GeoAlerta_C_.Domain.Entities
 {
     public class Alertas
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public DateTime DataHora { get; set; }
         public NivelRisco NivelRisco { get; set; }
         public int Probabilidade { get; set; }
